@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 animator [firecracker]</title>
+</head>
+<body>
+    <div id="firecracker">
+        <div class="firecracker firecracker-stage">
+            <div class="stage-line stage-line1"></div>
+            <div class="stage-line stage-line2"></div>
+            <div class="stage-line stage-line3"></div>
+            <div class="stage-line stage-line4"></div>
+            <div class="stage-work"></div>
+        </div>
+        <div class="firecracker firecracker-frames">
+            <div class="frames-item-stage"></div>
+            <div class="frame-item frame-item-add">+</div>
+        </div>
+        <div class="firecracker firecracker-setting">
+            <input type="text" class="setting-bzcurve">
+            <select name="firecracker-mode" id="firecracker-mode">
+                <option value="pc" selected>pc</option>
+                <option value="mobile">mobile</option>
+            </select>
+            <input type="button" class="setting-go" value="go">
+            <input type="text" value="" placeholder="posiX in phone">
+            <input type="text" value="" placeholder="posiY in phone">
+        </div>
+    </div>
+</body>
+
+<script src="./src/style.js"></script>
+<script src="./src/event.js"></script>
+<script src="./src/styleManeger.js"></script>
+<script src="./src/dragable.js"></script>
+<script src="./src/editable.js"></script>
+<script src="./src/frameControl.js"></script>
+<script src="./src/mainControl.js"></script>
+<script>
+    EditAble(document.querySelector('.stage-work'));
+    FrameControl(document.querySelector('.firecracker-frames'));
+    DragAble(document.querySelector('.stage-work'));
+    MainControl(
+        document.querySelector('.stage-work'),
+        document.querySelector('.firecracker-setting'),
+        document.querySelector('.firecracker-frames')
+    )
+</script>
+
+</html>
