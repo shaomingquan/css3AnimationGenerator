@@ -52,7 +52,7 @@
 
     function DragAble (wrapper) {
         //获取wrapper距离页面左上角的距离
-        var recurrenceOffsets = getOffsetRecurrence(wrapper);
+        var recurrenceOffsets = null;
 
         //阻止默认事件以免选择块内数字
         E(wrapper, 'mousemove', function (e) {
@@ -62,6 +62,7 @@
         var dragOffset = {};
         var SM = null;
         var mousedowmHandler = function (e) {
+            recurrenceOffsets = getOffsetRecurrence(wrapper);
             dom = e.target.tagName === 'SPAN' ? e.target.parentElement : e.target;
             SM = StyleManeger (dom)
             if(dom.getAttribute('class').indexOf('dragable') >= 0) {
