@@ -103,7 +103,7 @@
                 return function (e) {
                     StyleManeger(dom).st(
                         attrName ,
-                        (initTransform[attrName] || 0) + (getAngle([e.clientX, e.clientY], o) - initialAngle)
+                        (initTransform[attrName] || 0) + (getAngle([e.pageX, e.pageY], o) - initialAngle)
                     );
                 }
             } else if('opacity' === attr.type) {

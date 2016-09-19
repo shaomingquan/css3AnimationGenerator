@@ -31,6 +31,15 @@ var style = `
             -webkit-border-radius:8px;
             -moz-border-radius:8px;
             border-radius:8px;
+            position: relative;
+        }
+        .stage-phone-sim{
+            position: absolute;
+            display: none;
+            background-color: rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            -webkit-transition: all 500ms;-moz-transition: all 500ms;-ms-transition: all 500ms;-o-transition: all 500ms;transition: all 500ms;
         }
         .stage-line {
             height: ${STAGE_HEIGHT / 2}px;

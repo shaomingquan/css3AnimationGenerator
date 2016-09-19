@@ -18,7 +18,7 @@
     }
 
     SM.prototype.sts = function () {
-        var transformStyleString = this.getTransformString(this.transformObj);
+        var transformStyleString = this.getTransformString();
         ['mozTransfrom', 'webkitTransform', 'transform'].forEach(function (attr) {
             this.dom.style[attr] = transformStyleString;
         }.bind(this));
@@ -37,12 +37,30 @@
         this.sts();
     }
 
-    SM.prototype.getTransformString = function (transformObj) {
-        return Object.keys(transformObj).filter(function(key) {
+    SM.prototype.getTransformString = function () {
+        //如果传rem则生成rem为单位的string
+        return Object.keys(this.transformObj).filter(function(key) {
             return key !== 'opacity';
         }).map(function (key) {
             return `${key}(${this.transformObj[key]}${getTransformUnit(key)})`;
         }.bind(this)).join(' ');
+    }
+
+    SM.prototype.getStyle = function (rem) {
+        if(this.transformObj.opacity) {
+            return `
+                {
+                    opacity: ${this.transformObj.opacity};
+                    transform: ${this.getTransformString()};
+                }
+            `
+        } else {
+            return `
+                {
+                    transform: ${this.getTransformString()};
+                }
+            `
+        }
     }
 
     function getTransformUnit (attr) {
